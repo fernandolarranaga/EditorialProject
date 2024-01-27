@@ -1,0 +1,39 @@
+.songs{
+    display:flex;
+    flex-wrap: wrap;
+    gap:10px;
+    justify-content: center;
+    color:white;
+}
+
+.song {
+    width: calc(300px + 8%);
+    padding: 20px;
+    border: 1px solid black;
+    background-color: rgba(26, 34, 38, 0.8);
+    /* background-image: url('music2.jpg'); */
+}
+.song img {
+    width: 100px;
+    height: 140px;
+    object-fit: cover;  
+    object-position: center center; 
+    border-radius: 8px; 
+  }
+
+.project-content {
+    max-height: 3.6em; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; 
+    -webkit-box-orient: vertical;
+    color:rgb(255, 255, 255);
+}
+.texto p{
+    font-size:10px;
+   
+}
+
+

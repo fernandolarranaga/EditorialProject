@@ -1,0 +1,54 @@
+<!-- <div>
+    <label for="searchTerm">Buscar proyectos:</label>
+    <input type="text" id="searchTerm" [(ngModel)]="searchTerm" />
+    <button (click)="searchProjects()">Buscar</button>
+  </div>
+   -->
+<!-- <div *ngIf="showProjects">
+    <div *ngFor="let project of projects">
+      <p>{{ project.title }}</p>
+    </div>
+  </div> -->
+
+<div class="card-container">
+  <label for="searchTerm">Buscar proyectos:</label>
+  <div class="search-container">
+    <input
+      type="text"
+      id="searchTerm"
+      [(ngModel)]="searchTerm"
+      class="search-input"
+    />
+    <button (click)="searchProjects()" class="search-button">
+      <img src="https://static.vecteezy.com/system/resources/previews/012/174/337/original/simple-magnifying-icon-png.png"
+        alt="Lupa"
+        class="search-icon"
+      />
+    </button>
+  </div>
+  <div class="logInfo">
+    <p>* Para poder obtener información debes estar logueado</p>
+  </div>
+</div>
+
+<div class="contenedor" *ngIf="showProjects">
+  <div class="songs">
+    <div
+      class="song list d-flex flex-column align-items-center"
+      *ngFor="let item of projects"
+    >
+      <img src="{{ item.avatar }}" class="mx-auto my-auto" />
+      <hr />
+      <h6>{{ item.title }}</h6>
+      <div class="project-content texto">
+        <p>{{ item.content }}</p>
+      </div>
+      <div>
+        <p></p>
+        <button class="btn btn-info" [routerLink]="['/projects', item._id]">
+          Details
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

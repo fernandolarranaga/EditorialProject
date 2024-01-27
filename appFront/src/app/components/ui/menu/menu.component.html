@@ -1,0 +1,30 @@
+<nav>
+  <ul>
+    <li [routerLink]="['/']">Inicio</li>
+    <li *ngIf="service.isLogged()" [routerLink]="['/projects']">
+      Lista de proyectos
+    </li>
+    <li *ngIf="service.isLogged()" [routerLink]="['/projects/new']">
+      Crea un proyecto
+    </li>
+    <li *ngIf="!service.isLogged()" [routerLink]="['/register']">Registro</li>
+    <li *ngIf="!service.isLogged()" [routerLink]="['/login']">Login</li>
+    <li *ngIf="service.isLogged()" (click)="onClicklogout()">LogOut</li>
+  </ul>
+</nav>
+<div
+  id="carouselExampleIndicators"
+  class="carousel slide"
+  data-ride="carousel"
+  style="width: 100%; max-height: 300px; overflow: hidden"
+>
+  <div class="carousel-inner" style="height: 100%">
+    <div class="carousel-item active">
+      <img
+        style="object-fit: cover; width: 100%; height: 100%; margin-top: -10%"
+        src="https://www.cultura.gob.es/.imaging/mte/mcd-theme/contenido-cim-ancho-2c/dam/mcd/cultura/areas/archivos/mc/archivos/nhn/portada/pararinconheraldica3/jcr:content/pararinconheraldica3.jpg.jpg"
+        alt="First slide"
+      />
+    </div>
+  </div>
+</div>

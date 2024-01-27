@@ -1,0 +1,22 @@
+<div class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
+    <div class="menu-container text-justify p-4" style="background-color: rgba(249, 249, 249, 0.8); border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 80%; max-width: 600px;">
+       
+        
+
+        <div *ngIf="project">
+           <div class="imagenDetail text-center">
+            <img src="{{project.avatar}}" class="img-fluid mb-1" alt="Portada de la canción" style="border-radius: 8px;">
+        </div>
+            <h1 class="fs-4 mb-3">{{project.title}}</h1>
+            <h5 class="fs-6 mb-3">{{project.content}}</h5>            
+            <h6 class="fs-6 mb-3">Publicado por: {{project.author?.username}} </h6>
+            <h6 class="fs-6 mb-3">{{project.author?.email}}   </h6>
+            <p>{{ project.fecha | date: 'mediumDate' || "Fecha no disponible" }}</p>
+            <button class="btn btn-danger" 
+            *ngIf="project" 
+            (click)="onClickBorrar(project?._id)">Eliminar</button>
+            <p class="fs-5 mb-4" [routerLink]="['/projects/edit/' + project?._id]">Modifica el proyecto</p>
+        </div>
+    </div>
+</div>
+
