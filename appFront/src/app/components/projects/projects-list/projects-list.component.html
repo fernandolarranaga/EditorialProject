@@ -1,6 +1,6 @@
 <div class="contenedor">
     <div class="songs">
-        <div class="song list d-flex flex-column align-items-center" *ngFor="let item of projects">
+        <div class="song list d-flex flex-column align-items-center" *ngFor="let item of arrProjects.value">
             <img src="{{item.avatar}}"  class="mx-auto my-auto">
             <hr>
             <h6>{{item.title}}</h6>
@@ -8,8 +8,10 @@
                 <p>{{item.content}}</p>
             </div>
             <div><p></p>
-                <button class="btn btn-info" [routerLink]="['/projects', item._id]">Details</button>
+                <button class="btn btn-info" [routerLink]="['/projects', item?._id]">Details</button>
             </div>
         </div>
     </div>
 </div>
+
+<!-- {{resultBehivor$ | async | json }} -->

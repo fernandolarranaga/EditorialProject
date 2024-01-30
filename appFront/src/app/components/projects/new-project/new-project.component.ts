@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { Router } from '@angular/router';
+import { Project } from 'src/app/Project.interface';
 
 @Component({
   selector: 'app-new-project',
@@ -14,13 +15,13 @@ export class NewProjectComponent implements OnInit {
 
   constructor(private projectsService: ProjectsService, private router: Router) {
     this.formulario = new FormGroup({
-      title: new FormControl(),
-      content: new FormControl(),
-      avatar:new FormControl(),
+      title: new FormControl('', Validators.required),
+      content: new FormControl('', Validators.required),
+      avatar:new FormControl('', Validators.required),
       authorId: new FormControl(),
       authorEmail: new FormControl(),
       fecha: new FormControl() 
-    });
+     });
   }
 
   onSubmit() {
@@ -37,12 +38,12 @@ export class NewProjectComponent implements OnInit {
     });
 
     this.projectsService.create(this.formulario.value).subscribe(
-      (response: any) => { 
-        console.log('Canción creada exitosamente:', response);
+      (response: Project) => { 
+        console.log('Proyecto creado exitosamente:', response);
         this.router.navigate(['/projects']);
       },
       (error) => {
-        console.error('Error al crear la canción:', error);
+        console.error('Error al crear el proyecto:', error);
       }
     );
   }

@@ -26,9 +26,11 @@ export class ProjectSearchComponent implements OnInit {
   searchProjects() {
     if (this.searchTerm.trim() !== '') {
       // Filtra los proyectos según la palabra clave
-      this.projectsService.getAll().subscribe(response => {
-        this.projects = response.filter(project =>
-          project.title && project.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      this.projectsService.getAll().subscribe((response) => {
+        this.projects = response.filter(
+          (project) =>
+            project.title &&
+            project.title.toLowerCase().includes(this.searchTerm.toLowerCase())
         );
         this.showProjects = this.projects.length > 0; // Muestra la lista si hay al menos un proyecto
       });

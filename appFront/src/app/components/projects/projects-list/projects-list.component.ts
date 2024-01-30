@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import {Project} from '../../../Project.interface'
 
 
 @Component({
@@ -11,8 +12,9 @@ import { Router } from '@angular/router';
 })
 export class ProjectsListComponent implements OnInit {
 
-  projects:any[]=[];
-  arrProjects = new BehaviorSubject<any[]>([]);
+  projects:Project[]=[];
+  arrProjects = new BehaviorSubject<Project[]>([]);
+  resultBehivor$= this.arrProjects.asObservable();
 
 
   constructor(
@@ -20,17 +22,16 @@ export class ProjectsListComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.getSongs();
+    this.getProjects();
   }
-
-  getSongs(){
+  getProjects() {
     this.projectsService.getAll()
       .subscribe(data => {
-        console.log(data)
-        this.projects = data;
-        this.arrProjects.next(data);
-      })
-        }
-
+        this.arrProjects.next(data.map((project: Project) => project));
+      });
+  }
+  
 }
+
+
 

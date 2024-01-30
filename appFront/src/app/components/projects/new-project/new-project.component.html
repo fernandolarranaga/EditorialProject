@@ -1,49 +1,63 @@
 <div class="container">
-    <div class="row">
-      <div class="col-lg-3 col-md-2"></div>
-      <div class="col-lg-6 col-md-8 login-box">
-        <div class="col-lg-12 login-key">
-          <i class="fa fa-key" aria-hidden="true"></i>
-        </div>
-        <div class="col-lg-12 login-title">Presenta tu proyecto</div>
-  
-        <div class="col-lg-12 login-form">
-          <div class="col-lg-12 login-form">
-            <form  [formGroup]="formulario" (ngSubmit)="onSubmit()">
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  formControlName="title"
-                  placeholder="Title"
-                />
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Presenta tu proyecto" formControlName="content" />
-              </div>
-    
-
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Añade tu avatar" formControlName="avatar" />
-              </div>
-
-            
-
-              <div class="col-lg-12 loginbttm">
-                <div class="col-lg-6 login-btm login-text">
-                  <!-- Error Message -->
-                </div>
-                <div class="col-lg-1 login-btm login-button">
-                  <button type="submit" class="btn btn-outline-primary">
-                    Enviar
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-2"></div>
+  <div class="row">
+    <div class="col-lg-3 col-md-2"></div>
+    <div class="col-lg-6 col-md-8 login-box">
+      <div class="col-lg-12 login-key">
+        <i class="fa fa-key" aria-hidden="true"></i>
       </div>
+      <div class="col-lg-12 login-title">Presenta tu proyecto</div>
+
+      <div class="col-lg-12 login-form">
+        <div class="col-lg-12 login-form">
+          <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <input
+                 type="text"
+                 class="form-control"
+                 formControlName="title"
+                 placeholder="Title"
+              />
+              <div class="error" *ngIf="formulario.controls['title'].errors?.['required']">
+                 * El título es requerido.
+              </div>
+             </div>
+             <div class="form-group">
+              <input
+                 type="text"
+                 class="form-control"
+                 placeholder="Presenta tu proyecto"
+                 formControlName="content"
+              />
+              <div class="error" *ngIf="formulario.controls['content'].errors?.['required']">
+                 * El contenido es requerido.
+              </div>
+             </div>
+             <div class="form-group">
+              <input
+                 type="text"
+                 class="form-control"
+                 placeholder="Añade tu avatar"
+                 formControlName="avatar"
+              />
+              <div class="error" *ngIf="formulario.controls['avatar'].errors?.['required']">
+                 * El avatar es requerido.
+              </div>
+             </div>
+
+            <div class="col-lg-12 loginbttm">
+              <div class="col-lg-6 login-btm login-text">
+                <!-- Error Message -->
+              </div>
+              <div class="col-lg-1 login-btm login-button">
+                <button type="submit" class="btn btn-outline-primary" #submitBtn [disabled]="!formulario.valid">
+                  Enviar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-2"></div>
     </div>
   </div>
-  
+</div>
